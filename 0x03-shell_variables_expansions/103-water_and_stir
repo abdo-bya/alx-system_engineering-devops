@@ -1,0 +1,14 @@
+#!/bin/bash
+
+water="$WATER"
+stir="$STIR"
+
+decimal_water=$(echo "ibase=$water; $water" | bc)
+decimal_stir=$(echo "ibase=$stir; $stir" | bc)
+
+decimal_result=$(echo "$decimal_water + $decimal_stir" | bc)
+
+base_bestchol=bestchol
+bestchol_result=$(echo "obase=$base_bestchol; $decimal_result" | bc)
+
+echo "$bestchol_result"
